@@ -56,11 +56,11 @@ exports.notice = (comment) => {
   const main_color = process.env.MAIN_COLOR ? process.env.MAIN_COLOR : "orange";
   const main_img = process.env.MAIN_IMG
     ? process.env.MAIN_IMG
-    : "https://ae01.alicdn.com/kf/U5bb04af32be544c4b41206d9a42fcacfd.jpg";
+    : "https://cdn.jsdelivr.net/gh/ghl1024/CDN/img/yhy.jpg";
 
   if (!process.env.DISABLE_EMAIL) {
     const emailSubject =
-      "📌 哇！「" + process.env.SITE_NAME + "」上有人回复了你啦！快点我！💦";
+      "哇哦，【" + process.env.SITE_NAME + "】上有人回复你啦，快点我💦";
     const emailContent = noticeTemplate({
       siteName: process.env.SITE_NAME,
       siteUrl: process.env.SITE_URL,
@@ -109,7 +109,7 @@ exports.notice = (comment) => {
     axios({
       method: "post",
       url: `https://sc.ftqq.com/${process.env.SCKEY}.send`,
-      data: `text=${process.env.SITE_NAME} 来新评论啦！&desp=${scContent}`,
+      data: `text=${process.env.SITE_NAME} 收到新的留言啦！&desp=${scContent}`,
       headers: {
         "Content-type": "application/x-www-form-urlencoded",
       },
