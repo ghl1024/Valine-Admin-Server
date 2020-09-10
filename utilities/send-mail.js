@@ -93,15 +93,19 @@ exports.notice = (comment) => {
 
   // 微信提醒
   const scContent =
-    "### 留言内容👉：" +
+    "#### 留言内容👉：" +
     "\r\n > " +
     comment.get("comment") +
-    "\r\n" +        
-    "### 原文地址👉：" +
+    "\r\n" +
+        
+    "#### 原文地址👉：" +
     "\r\n > " +
     process.env.SITE_URL +
-    comment.get("url") +    
-    "\r\n #### 评论人👉：\r\n > " +
+    comment.get("url") + 
+    "\r\n" +
+        
+    "#### 留言同学👉：" +
+    "\r\n > " +
     comment.get("nick") +
     "(" +
     comment.get("mail") +
