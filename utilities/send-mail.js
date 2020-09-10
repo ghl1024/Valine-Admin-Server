@@ -104,7 +104,7 @@ exports.notice = (comment) => {
     comment.get("url") + 
     "\r\n" +
         
-    "#### 留言同学👉：" +
+    "\r\n #### 留言同学👉：" +
     "\r\n > " +
     comment.get("nick") +
     "(" +
