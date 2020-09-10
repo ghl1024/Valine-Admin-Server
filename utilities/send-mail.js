@@ -60,7 +60,7 @@ exports.notice = (comment) => {
 
   if (!process.env.DISABLE_EMAIL) {
     const emailSubject =
-      "哇哦，【" + process.env.SITE_NAME + "】上有人回复你啦，快点我💦";
+      "📌哇哦，【" + process.env.SITE_NAME + "】上有人回复你啦💦";
     const emailContent = noticeTemplate({
       siteName: process.env.SITE_NAME,
       siteUrl: process.env.SITE_URL,
@@ -93,14 +93,14 @@ exports.notice = (comment) => {
 
   // 微信提醒
   const scContent =
-    "#### 留言内容：" +
+    "#### 留言内容👉：" +
     "\r\n > " +
     comment.get("comment") +
     "\r\n" +
-    "原文地址 👉 ：" +
+    "#### 原文地址👉 ：\r\n" +
     process.env.SITE_URL +
     comment.get("url") +
-    "\r\n #### 留言人：\r\n" +
+    "#### 留言人👉 ：\r\n" +
     comment.get("nick") +
     "(" +
     comment.get("mail") +
