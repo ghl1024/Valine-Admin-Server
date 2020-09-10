@@ -93,7 +93,6 @@ exports.notice = (comment) => {
 
   // 微信提醒
   const scContent =
-  const scContent =
     "### 留言内容👉：" +
     "\r\n > " +
     comment.get("comment") +
