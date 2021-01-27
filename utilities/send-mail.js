@@ -56,7 +56,7 @@ exports.notice = (comment) => {
   const main_color = process.env.MAIN_COLOR ? process.env.MAIN_COLOR : "orange";
   const main_img = process.env.MAIN_IMG
     ? process.env.MAIN_IMG
-    : "https://cdn.jsdelivr.net/gh/ghl1024/CDN/img/yhy.jpg";
+    : "https://cdn.jsdelivr.net/gh/ghl1024/CDN/img/home.jpg";
 
   if (!process.env.DISABLE_EMAIL) {
     const emailSubject =
