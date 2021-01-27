@@ -56,11 +56,11 @@ exports.notice = (comment) => {
   const main_color = process.env.MAIN_COLOR ? process.env.MAIN_COLOR : "orange";
   const main_img = process.env.MAIN_IMG
     ? process.env.MAIN_IMG
-    : "https://ae01.alicdn.com/kf/U5bb04af32be544c4b41206d9a42fcacfd.jpg";
+    : "https://cdn.jsdelivr.net/gh/ghl1024/CDN/img/yhy.jpg";
 
   if (!process.env.DISABLE_EMAIL) {
     const emailSubject =
-      "📌 哇！「" + process.env.SITE_NAME + "」上有人回复了你啦！快点我！💦";
+      "📌哇哦，【" + process.env.SITE_NAME + "】上有人回复你啦💦";
     const emailContent = noticeTemplate({
       siteName: process.env.SITE_NAME,
       siteUrl: process.env.SITE_URL,
@@ -93,14 +93,19 @@ exports.notice = (comment) => {
 
   // 微信提醒
   const scContent =
-    "#### 评论内容" +
+    "#### 📌留言内容👉：" +
     "\r\n > " +
     comment.get("comment") +
     "\r\n" +
-    "原文地址 👉 " +
+        
+    "#### 📌原文地址👉：" +
+    "\r\n > " +
     process.env.SITE_URL +
-    comment.get("url") +
-    "\r\n #### 评论人\r\n" +
+    comment.get("url") + 
+    "\r\n" +
+        
+    "\r\n #### 📌留言同学👉：" +
+    "\r\n > " +
     comment.get("nick") +
     "(" +
     comment.get("mail") +
@@ -109,7 +114,7 @@ exports.notice = (comment) => {
     axios({
       method: "post",
       url: `https://sc.ftqq.com/${process.env.SCKEY}.send`,
-      data: `text=${process.env.SITE_NAME} 来新评论啦！&desp=${scContent}`,
+      data: `text=${process.env.SITE_NAME} 收到新的留言啦！&desp=${scContent}`,
       headers: {
         "Content-type": "application/x-www-form-urlencoded",
       },
@@ -128,9 +133,9 @@ exports.notice = (comment) => {
     if (process.env.QQ_SHAKE != null) {
       axios
         .get(
-          `https://qmsg.zendee.cn/send/${
+          `https://qmsg.zendee.cn:443/send/${
             process.env.QMSG_KEY
-          }?msg=${encodeURIComponent("[CQ:shake]")}`
+          }.html?msg=${encodeURIComponent("[CQ:shake]")}`
         )
         .then(function (response) {
           if (response.status === 200 && response.data.success === true) {
@@ -164,9 +169,9 @@ ${$(
 [CQ:face,id=169]${url + "#" + comment.get("objectId")}`;
     axios
       .get(
-        `https://qmsg.zendee.cn/send/${
+        `https://qmsg.zendee.cn:443/send/${
           process.env.QMSG_KEY
-        }?msg=${encodeURIComponent(scContent)}` + qq
+        }.html?msg=${encodeURIComponent(scContent)}` + qq
       )
       .then(function (response) {
         if (response.status === 200 && response.data.success === true)
